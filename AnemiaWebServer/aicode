@@ -1,0 +1,23 @@
+# import os
+# from langchain_astradb import AstraDBVectorStore
+# from langchain_core.documents import Document
+# from langchain_openai import OpenAIEmbeddings
+
+# from datasets import load_dataset
+# from dotenv import load_dotenv
+
+# load_dotenv()
+
+
+
+# ASTRA_DB_APPLICATION_TOKEN = os.environ.get("ASTRA_DB_APPLICATION_TOKEN")
+# ASTRA_DB_API_ENDPOINT = os.environ.get("ASTRA_DB_API_ENDPOINT")
+# OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+
+# embedding = OpenAIEmbeddings()
+# vstore = AstraDBVectorStore(
+#     embedding=embedding,
+#     collection_name="Text_qa_keyspace",
+#     token=os.environ["ASTRA_DB_APPLICATION_TOKEN"],
+#     api_endpoint=os.environ["ASTRA_DB_API_ENDPOINT"],
+# )
