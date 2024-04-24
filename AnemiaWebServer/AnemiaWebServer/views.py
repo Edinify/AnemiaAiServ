@@ -40,6 +40,7 @@ bin_Data = []
 def Check_image(file):
     print(file,"asa")
     img = cv.imread(f'../{file['image']}')
+    os.remove(f'../{file['image']}')
     blank = np.zeros(img.shape[:2], dtype='uint8')
     mask = cv.circle(blank, (img.shape[1]//2,img.shape[0]//2), 100, 255, -1)
     for i, col in enumerate(colors):
