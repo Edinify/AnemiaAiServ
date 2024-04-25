@@ -69,7 +69,6 @@ def Check_image(file):
     # plt.plot(hist, color=col)
     # plt.xlim([0,256])
 
-
 class PostView(APIView):
     parser_classes = (MultiPartParser, FormParser)
 
