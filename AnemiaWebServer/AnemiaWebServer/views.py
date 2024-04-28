@@ -22,7 +22,7 @@ os.environ['GOOGLE_API_KEY'] = "AIzaSyBS1SuSV0kBHIW64EujGA-sWM4PSmnU_X4"
 genai.configure(api_key = os.environ['GOOGLE_API_KEY'])
 
 model = genai.GenerativeModel('gemini-pro')
-
+print("hello world")
 
 plt.figure()
 plt.title('Colour Histogram')
