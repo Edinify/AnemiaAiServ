@@ -30,8 +30,7 @@ jobs:
       
       
       - name: Install dependencies
-        run:  |
-          cd AnemiaWebServer 
+        run:  AnemiaWebServer 
           pip install -r requirements.txt
       
 
