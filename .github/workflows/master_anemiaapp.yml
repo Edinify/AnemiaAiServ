@@ -24,7 +24,6 @@ jobs:
 
       - name: Create and start virtual environment
         run: |
-          cd AnemiaWebServer
           python -m venv venv
           source venv/bin/activate
       
@@ -38,7 +37,8 @@ jobs:
         run: |
           cd AnemiaWebServer 
           python manage.py collectstatic --noinput
-        
+
+          
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
