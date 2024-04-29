@@ -30,8 +30,7 @@ jobs:
       
       
       - name: Install dependencies
-        run:  AnemiaWebServer 
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
       
 
       - name: Collect static files
