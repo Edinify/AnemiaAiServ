@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-STATIC_ROOT = BASE_DIR/'staticfiles'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,6 +70,8 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'AnemiaWebServer.wsgi.application'
 
 
@@ -85,6 +85,7 @@ DATABASES = {
     }
 }
 
+STATIC_ROOT = BASE_DIR/'staticfiles'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -126,8 +127,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
 
 import os
 
