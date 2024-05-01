@@ -1,8 +1,9 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+
+          # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - AnemiaWebApp
+name: Build and deploy Python app to Azure Web App - AnemiaApp
 
 on:
   push:
@@ -24,23 +25,36 @@ jobs:
 
       - name: Create and start virtual environment
         run: |
+          cd AnemiaWebServer 
           python -m venv venv
           source venv/bin/activate
       
+      
       - name: Install dependencies
-        run: pip install -r requirements.txt
-        
+        run:  |
+          cd AnemiaWebServer 
+          pip install -r requirements.txt
+      
+
+      - name: Collect static files
+        run: |
+          cd AnemiaWebServer 
+          python manage.py collectstatic --noinput
+
+          
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: |
+          cd AnemiaWebServer
+          zip release.zip ./* -r
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
         with:
           name: python-app
           path: |
-            release.zip
+            AnemiaWebServer/release.zip
             !venv/
 
   deploy:
@@ -73,6 +87,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'AnemiaWebApp'
+          app-name: 'AnemiaApp'
           slot-name: 'Production'
           
