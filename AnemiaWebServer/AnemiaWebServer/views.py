@@ -99,13 +99,13 @@ def test_serializers(request):
     if request.method == 'GET':
         test = Test.objects.all()
         serializer =  TestSerializer(test, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        return JsonResponse("Wokr", safe=False)
     
     if request.method == 'POST':
         serializer = TestSerializer(data=request.data)
         if  serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response("work1", status=status.HTTP_201_CREATED)
         
 @api_view(["GET", 'PUT','DELETE'])
 def test_details(request,id):
@@ -117,12 +117,12 @@ def test_details(request,id):
 
     if request.method == "GET":
         serializer = TestSerializer(test)
-        return Response(serializer.data)
+        return Response("work2")
     elif request.method == "PUT":
         serializer = TestSerializer(test, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            return Response("work3")
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == "DELETE":
         test.delete()
