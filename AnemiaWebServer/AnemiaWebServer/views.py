@@ -71,7 +71,7 @@ def Check_image(file):
 
 class PostView(APIView):
     parser_classes = (MultiPartParser, FormParser)
-
+    print(parser_classes)
     
     def post(self, request, *args, **kwargs):
         posts_serializer = PostSerializer(data=request.data)
