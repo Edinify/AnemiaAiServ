@@ -74,8 +74,8 @@ class PostView(APIView):
 
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all()
-        serializer = PostSerializer(posts, many=True)
-        return Response("data")
+        serializer = PostSerializer(data=request.data)
+        return Response(serializer, status=status.HTTP_201_CREATED)
 
     def post(self, request, *args, **kwargs):
         posts_serializer = PostSerializer(data=request.data)
