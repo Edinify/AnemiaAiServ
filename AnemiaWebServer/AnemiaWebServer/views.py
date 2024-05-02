@@ -73,9 +73,13 @@ class PostView(APIView):
     parser_classes = (MultiPartParser, FormParser)
 
     def get(self, request, *args, **kwargs):
-        posts = Post.objects.all()
-        serializer = PostSerializer(data=request.data)
-        return Response(serializer, status=status.HTTP_201_CREATED)
+       posts_serializer = PostSerializer(data=request.data)
+       if posts_serializer.is_valid():
+            # 
+        posts_serializer.save()
+        print(posts_serializer.data)
+        AiRes = Check_image(posts_serializer.data)
+        return Response(AiRes, status=status.HTTP_201_CREATED)
 
     def post(self, request, *args, **kwargs):
         posts_serializer = PostSerializer(data=request.data)
