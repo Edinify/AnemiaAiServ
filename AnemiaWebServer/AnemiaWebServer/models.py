@@ -13,4 +13,4 @@ class Post(models.Model):
     image = models.ImageField(upload_to='image')
     
     def __str__(self):
-        return self.image
+        return "data"
