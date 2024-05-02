@@ -93,6 +93,30 @@ class PostView(APIView):
         print(request)
         return Response("data")
 
+
+@api_view(['GET', 'POST'])
+def image(request):
+
+    if request.method == 'POST':
+        posts_serializer = PostSerializer(data=request.data)
+        print(posts_serializer)
+        # print(posts_serializer.data)
+        if posts_serializer.is_valid():
+            # 
+            posts_serializer.save()
+            # print(request)
+            AiRes = Check_image(posts_serializer.data)
+            return Response(AiRes, status=status.HTTP_201_CREATED)
+        else:
+            print('error', posts_serializer.errors)
+            return Response(posts_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    if request.method == 'GET':
+        # serializer = PostSerializer(data=request.data)
+        # if  serializer.is_valid():
+        #     serializer.save()
+        return Response("work1", status=status.HTTP_201_CREATED)
+
 # Create your views here.
 @api_view(['GET', 'POST'])
 def test_serializers(request):
