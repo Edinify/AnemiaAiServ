@@ -38,7 +38,7 @@ color_count_array_b = []
 bin_Data = []
 
 def Check_image(file):
-    print(file,"asa")
+    # print(file,"asa")
     img = cv.imread(f'../{file['image']}')
     os.remove(f'../{file['image']}')
     blank = np.zeros(img.shape[:2], dtype='uint8')
@@ -61,7 +61,7 @@ def Check_image(file):
     promt = (f'Typical Healthy Sclera: A healthy sclera is typically very close to white,  Small deviations from these values arent unusual but are generally still in the high range.Anemic Sclera: An anemic sclera might show a pale blue or pale pink tint. The RGB values might slightly decrease in intensity, particularly in the blue channel, or increase in the red channel, indicating paleness or a bluish tint respectively. this is a RGB colors: {sclera_color} please shortly explain if this person only has anemia or not okay? ')
 
     response = model.generate_content(promt)
-    print(response.text)
+    # print(response.text)
     return response.text
     
     # for i,col in enumerate(colors):
@@ -80,7 +80,7 @@ class PostView(APIView):
         if posts_serializer.is_valid():
             # 
             posts_serializer.save()
-            print(request)
+            # print(request)
             AiRes = Check_image(posts_serializer.data)
             return Response(AiRes, status=status.HTTP_201_CREATED)
         else:
