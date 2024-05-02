@@ -9,5 +9,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', views.test_serializers),
     path('test/<int:id>', views.test_details),
-    path('postlar/', views.PostView.as_view(), name='posts_list'),
+    path('postlar/', views.test_details),
 ]  
