@@ -75,12 +75,12 @@ class PostView(APIView):
     
     def post(self, request, *args, **kwargs):
         posts_serializer = PostSerializer(data=request.data)
-        
+        print(posts_serializer)
         # print(posts_serializer.data)
         if posts_serializer.is_valid():
             # 
             posts_serializer.save()
-            print(posts_serializer.data)
+            print(request)
             AiRes = Check_image(posts_serializer.data)
             return Response(AiRes, status=status.HTTP_201_CREATED)
         else:
