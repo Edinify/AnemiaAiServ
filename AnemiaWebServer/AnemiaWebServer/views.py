@@ -132,6 +132,8 @@ def test_serializers(request):
             serializer.save()
             return Response("work1", status=status.HTTP_201_CREATED)
         
+
+        
 @api_view(["GET", 'PUT','DELETE'])
 def test_details(request,id):
  
