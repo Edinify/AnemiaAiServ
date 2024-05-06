@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['anemiawebapp.azurewebsites.net']
 
 
+
+# 
 # Application definition
 
 INSTALLED_APPS = [
