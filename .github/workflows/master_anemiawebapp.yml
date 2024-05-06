@@ -39,7 +39,6 @@ jobs:
         run: |
           cd AnemiaWebServer 
           python manage.py collectstatic --noinput
-
           
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -47,7 +46,6 @@ jobs:
         run: |
           cd AnemiaWebServer
           zip release.zip ./* -r
-
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
         with:
@@ -55,7 +53,6 @@ jobs:
           path: |
             AnemiaWebServer/release.zip
             !venv/
-
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -88,4 +85,3 @@ jobs:
         with:
           app-name: 'AnemiaWebApp'
           slot-name: 'Production'
-          
