@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['anemiaapp.azurewebsites.net']
 
 
 
-# 
+
 # Application definition
 
 INSTALLED_APPS = [
