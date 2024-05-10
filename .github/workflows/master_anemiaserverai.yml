@@ -1,5 +1,4 @@
-                              # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
+          # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
 name: Build and deploy Python app to Azure Web App - AnemiaApp
@@ -75,13 +74,13 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_7F023D8F82CC445D865E9F0C70AFF05A }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E40B4ACBAC7C4D5F8E4814B3B08951AC }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0C4DCE958CE44A06A82749B4F83152D5 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_25724424335D411A883CA2EE427A1790 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A934D8B94FC64D45ABB3F5A0D4ED1448 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_8EE86BBFA14649059B101963F5DB096E }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'AnemiaApp'
+          app-name: 'AnemiaServerAi'
           slot-name: 'Production'
