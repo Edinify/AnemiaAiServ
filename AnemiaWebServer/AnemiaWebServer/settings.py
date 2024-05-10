@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-dc7$b0^zx^j%!+#q+q(%my+t1q+9mhjt5ap3*c-8f-%gbv_trj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['anemiaserverai.azurewebsites.net']
+ALLOWED_HOSTS = ['*']
 
 WSGI_APPLICATION = 'AnemiaWebServer.wsgi.application'
 
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
