@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-dc7$b0^zx^j%!+#q+q(%my+t1q+9mhjt5ap3*c-8f-%gbv_trj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['anemiaapp.azurewebsites.net']
+ALLOWED_HOSTS = ['anemiaserverai.azurewebsites.net']
 
 WSGI_APPLICATION = 'AnemiaWebServer.wsgi.application'
 
