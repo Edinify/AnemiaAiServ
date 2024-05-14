@@ -1,7 +1,8 @@
-          # More GitHub Actions for Azure: https://github.com/Azure/actions
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - AnemiaApp
+name: Build and deploy Python app to Azure Web App - AnemiaServerAi
 
 on:
   push:
@@ -23,35 +24,25 @@ jobs:
 
       - name: Create and start virtual environment
         run: |
-          cd AnemiaWebServer 
           python -m venv venv
           source venv/bin/activate
       
-      
       - name: Install dependencies
-        run:  |
-          cd AnemiaWebServer 
-          pip install -r requirements.txt
-      
-
-      - name: Collect static files
-        run: |
-          cd AnemiaWebServer 
-          python manage.py collectstatic --noinput
-          
+        run: pip install -r requirements.txt
+        
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
-        run: |
-          cd AnemiaWebServer
-          zip release.zip ./* -r
+        run: zip release.zip ./* -r
+
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
         with:
           name: python-app
           path: |
-            AnemiaWebServer/release.zip
+            release.zip
             !venv/
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -74,9 +65,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_25724424335D411A883CA2EE427A1790 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A934D8B94FC64D45ABB3F5A0D4ED1448 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_8EE86BBFA14649059B101963F5DB096E }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8C79D4EF75664310894947BBD820A4B0 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_87DD139DD5FA46A4B5EC848229B24AD4 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_8D3C4CE6ECBC44C4A561890B45F99DE6 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
@@ -84,3 +75,4 @@ jobs:
         with:
           app-name: 'AnemiaServerAi'
           slot-name: 'Production'
+          
