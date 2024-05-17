@@ -30,15 +30,17 @@ plt.xlabel('Bins')
 plt.ylabel('# of pixels')
 colors = ('r','g','b')
 
-hist_data = []
-color_count_array_r = []
-color_count_array_g = []
-color_count_array_b = []
-# max_number_r, max_number_g, max_number_b =[]
-bin_Data = []
+
 
 def Check_image(file):
     # print(file,"asa")
+    color_count_array_r = []
+    color_count_array_g = []
+    color_count_array_b = []
+    hist_data = []
+    res = ''
+
+    bin_Data = []
     img = cv.imread(f'../{file['image']}')
     os.remove(f'../{file['image']}')
     blank = np.zeros(img.shape[:2], dtype='uint8')
@@ -57,11 +59,18 @@ def Check_image(file):
             elif col == 'b':
                 color_count_array_b.append(count[0])
             bin_Data.append(bin_value)
-    sclera_color = f'({max(color_count_array_r)}, {max(color_count_array_g)}, {max(color_count_array_b)})'
-    promt = (f'Typical Healthy Sclera: A healthy sclera is typically very close to white,  Small deviations from these values arent unusual but are generally still in the high range.Anemic Sclera: An anemic sclera might show a pale blue or pale pink tint. The RGB values might slightly decrease in intensity, particularly in the blue channel, or increase in the red channel, indicating paleness or a bluish tint respectively. this is a RGB colors: {sclera_color} please shortly explain if this person only has anemia or not okay? ')
+    sclera_color = f'(Red:{max(color_count_array_r)}, Green:{max(color_count_array_g)}, Blue{max(color_count_array_b)})'
+    print(color_count_array_r , color_count_array_b)
+    print(sclera_color)
+    promt = (f'write in   complex sentence')
+    # model.generate_content(promt)
+    if max(color_count_array_r)  > max(color_count_array_b) and max(color_count_array_g) > max(color_count_array_b):
+        res = "Analizlərimizə əsasən, təbriklər sizdə şüphəli hal görmədik"
+    elif max(color_count_array_r)  < max(color_count_array_b) and max(color_count_array_g) < max(color_count_array_b):
+        res = "Analizlərimizə əsasən, sizin anemiya olma ehtimalınız var"
+ 
 
-    response = model.generate_content(promt)
-    return response.text
+    return res 
     
     # for i,col in enumerate(colors):
     #         hist = cv.calcHist([img], [i], mask, [256], [0,256])
