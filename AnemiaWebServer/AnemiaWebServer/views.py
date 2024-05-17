@@ -50,6 +50,7 @@ def Check_image(file):
             hist_data.append(hist)
         # print(hist_data)
         
+        
     for i, col in enumerate(colors):
         for bin_value, count in enumerate(hist_data[i]):
             if col == 'r':
